@@ -1,11 +1,16 @@
 const express = require('express')
 const route = express.Router()
 const registrationcontroller = require("../../controllers/registrationcontroller")
+const loginController = require("../../controllers/loginController")
+const otpController = require("../../controllers/otpController")
 const secureApi = require("../../middleware/secureApi")
+const linkController = require('../../controllers/linkController')
 
-route.get('/registration', secureApi , registrationcontroller)
+route.post('/registration' , registrationcontroller);
+route.post('/login' , loginController);
+route.post('/otpVerification', otpController);
+route.post('/linkverification', linkController);
 
-//mongodb+srv://mernian:J$z5njKez7!J-h5@cluster0.ojwjkfk.mongodb.net/new-mernian?retryWrites=true&w=majority
-//new-mernian
+
 
 module.exports = route;
