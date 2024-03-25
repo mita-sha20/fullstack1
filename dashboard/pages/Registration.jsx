@@ -2,7 +2,8 @@
 import React, { useState } from 'react';
 import { Button, Checkbox, Form, Input , Alert, Space} from 'antd';
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import Resetemail from './Resetemail';
 
 const Registration = () => {
      let [loading,setLoading] = useState(false);
@@ -23,6 +24,7 @@ const Registration = () => {
     }
     )  
     console.log(data);
+    setLoading(false);
   
     setmsg("Registration Successfull. PLease check your email")
     // setTimeout(()=>{
@@ -30,7 +32,6 @@ const Registration = () => {
     // },1500)
   };
 
- 
   const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
   };
@@ -106,7 +107,24 @@ const Registration = () => {
       <Button type="primary" htmlType="submit" loading={loading} disabled={loading}>
         Submit
       </Button>
+     
+      <Link to="/forgotpass">Forget Password</Link>
+     
     </Form.Item>
+
+    <Form.Item
+      wrapperCol={{
+        offset: 8,
+        span: 16,
+      }}
+    >
+      <Button type="primary" htmlType="submit">
+      <Link to="/resetemail"> Resend email</Link>
+      </Button>
+     
+     
+    </Form.Item>
+   
   </Form> 
     </>
   )

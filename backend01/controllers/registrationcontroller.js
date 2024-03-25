@@ -40,14 +40,13 @@ let registrationcontroller = async (req , res) => {
             const transporter = nodemailer.createTransport({
                service: "gmail", 
                auth: {
-                 
                  user: "ummetaieba306@gmail.com",
                  pass: "yodn opnr uddi foge",
                },
              });
                
                const info = await transporter.sendMail({
-                 from: 'ummetaieba306@gmail.com', 
+                 from: 'SAMIHA', 
                  to: email, 
                  subject: "this is your verification", 
                  html: `<a href="http://localhost:5173/emailverification/${token}">Click here</a>`, 

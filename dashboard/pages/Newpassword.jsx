@@ -1,27 +1,30 @@
 import React, { useState } from 'react';
 import { Button, Checkbox, Form, Input } from 'antd';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
-const Forgotpass = () => {
-  let [loading,setLoading] = useState(false);
-  const onFinish = async (values) => {
-    console.log('Success:', values);
-
-    setLoading(true);
-
-    let data = await axios.post("http://localhost:8000/api/v1/auth/forgotpass",{
-      email: values.email,
-    }
-    )
-
-  };
-  const onFinishFailed = (errorInfo) => {
-    console.log('Failed:', errorInfo);
-  };
-   
+const Newpassword = () => {
+    let params = useParams();
+    let [loading,setLoading] = useState(false);
+    const onFinish = async (values) => {
+      console.log('Success:', values);
+  
+      setLoading(true);
+  
+      let data = await axios.post("http://localhost:8000/api/v1/auth/newpassword",{
+        password: values.password,
+        token: params.token
+      }
+      )
+  
+    };
+    const onFinishFailed = (errorInfo) => {
+      console.log('Failed:', errorInfo);
+    };
+     
   return (
-   <>
-     <Form
+    <>
+      <Form
     name="basic"
     labelCol={{
       span: 8,
@@ -39,20 +42,8 @@ const Forgotpass = () => {
     onFinishFailed={onFinishFailed}
     autoComplete="off"
   >
-    <Form.Item
-      label="Email"
-      name="email"
-      rules={[
-        {
-          required: true,
-          message: 'Please input your email!',
-        },
-      ]}
-    >
-      <Input />
-    </Form.Item>
 
-    {/* <Form.Item
+    <Form.Item
       label="Password"
       name="password"
       rules={[
@@ -63,7 +54,7 @@ const Forgotpass = () => {
       ]}
     >
       <Input.Password />
-    </Form.Item> */}
+    </Form.Item>
 
     <Form.Item
       wrapperCol={{
@@ -76,8 +67,8 @@ const Forgotpass = () => {
       </Button>
     </Form.Item>
   </Form>
-   </>
+    </>
   )
 }
 
-export default Forgotpass;
+export default Newpassword;
