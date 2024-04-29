@@ -2,10 +2,14 @@ import React, { useState } from 'react';
 import { Button, Checkbox, Form, Input , Alert, Space} from 'antd';
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { activeUser } from "../src/slices/userSlice";
 
 const Login = () => {
     let [loading,setLoading] = useState(false);
     let [msg,setmsg] = useState("");
+    const dispatch = useDispatch()
+
    let navigate = useNavigate();
     const onFinish = async (values) => {
       console.log('Success:', values);
@@ -21,7 +25,8 @@ const Login = () => {
       }
       )  
       console.log(data);
-    
+      dispatch(activeUser(data.data))
+      localStorage.setItem("user", JSON.stringify(data.data));
       setmsg(data.data.success);
     //   setTimeout(()=>{
     //       navigate(`/otpVerification/${values.email}`);

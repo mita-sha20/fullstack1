@@ -12,6 +12,11 @@ import Forgotpass from "../pages/Forgotpass";
 import Resetemail from "../pages/Resetemail";
 import Newpassword from "../pages/Newpassword";
 import Newemail from "../pages/Newemail";
+import Dashbboard from "../pages/Dashbboard";
+import Addcategory from "../pages/Addcategory";
+import Addsubcat from "../pages/Addsubcat";
+import Viewcategory from "../pages/Viewcategory";
+import Viewsubcat from "../pages/Viewsubcat";
 
 
 const router = createBrowserRouter(
@@ -49,6 +54,26 @@ const router = createBrowserRouter(
           path="/newpassword/:token"
           element={<Newpassword />}
         />
+         <Route
+          path="/dashboard/"
+          element={<Dashbboard />}>
+         <Route
+          path="addcategory"
+          element={<Addcategory />}
+         />
+         <Route
+          path="addsubcategory"
+          element={<Addsubcat />}
+         />
+          <Route
+          path="viewcategory"
+          element={<Viewcategory />}
+         />
+         <Route
+          path="viewsubcategory"
+          element={<Viewsubcat />}
+         />
+         </Route>
         
     </Route>
   ))
