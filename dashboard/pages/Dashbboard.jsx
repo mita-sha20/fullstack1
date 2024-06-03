@@ -23,8 +23,8 @@ const Dashbboard = () => {
           ]),
           userInfo.role != "User" &&
           getItem('Product', 'sub2', <AppstoreOutlined />, [
-            getItem('Add product', '3'),
-            getItem('View product', '4'),
+            getItem('Add product', '/dashboard/addproduct'),
+            getItem('View product', '/dashboard/viewproduct'),
           ]),
           {
             type: 'divider',
